@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📊 Rateio de Colaboradores - Fluig Widget
 
 Sistema moderno para gestão de rateio de colaboradores por filiais, desenvolvido para plataforma Fluig.
@@ -150,3 +151,7 @@ Para suporte técnico:
 ⭐ **Se este projeto foi útil, deixe uma estrela!**
 
 *Desenvolvido com ❤️ para Rede Oncoclinicas*
+=======
+# RateioColaboradores
+Rateio de Colaboradores
+>>>>>>> 1cccec2ec07f796857e3e10e0eef6c480940cdc5

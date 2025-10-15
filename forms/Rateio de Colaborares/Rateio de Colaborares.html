@@ -1,0 +1,212 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Rateio de Colaboradores</title>
+		<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+		<link type="text/css" rel="stylesheet" href="css/rateio-colaboradores.css"/>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	</head>
+	<body>
+		<!-- Cabeçalho Moderno -->
+		<header class="header-modern">
+			<div class="header-content-modern">
+				<div class="logo-modern">
+					<i class="fluigicon fluigicon-user-plus icon-lg"></i>
+				</div>
+				<div class="header-text-modern">
+					<h1>Rateio de Colaboradores</h1>
+					<p class="subtitle-modern">Sistema de Distribuição de Colaboradores por Filiais</p>
+				</div>
+			</div>
+		</header>
+
+		<div class="fluig-style-guide modern-container">
+			<form name="form" role="form">
+
+				<!-- ESTE FICHARIO SERVE COMO BASE DE DADOS PARA A WIDGET DE RATEIO DE COLABORADORES
+					 NENHUMA EDICAO DEVE SER FEITA NESTE FICHARIO, TODAS AS ALTERAÇÕES DEVEM SER FEITAS ATRAVES DA WIDGET
+				-->
+
+				<!-- DADOS DO COLABORADOR -->
+				<div class="panel-modern panel-info-modern">
+					<div class="panel-heading-modern">
+						<h3 class="panel-title-modern">
+							<i class="fluigicon fluigicon-user icon-md"></i>
+							Dados do Colaborador
+						</h3>
+					</div>
+					<div class="panel-body-modern">
+						<div class="row-modern">
+							<div class="col-md-2-modern">
+								<div class="form-group-modern">
+									<label class="control-label-modern">
+										<i class="fluigicon fluigicon-calendar icon-sm"></i>
+										Mês/Ano
+									</label>
+									<input type="text" name="mesAno" id="mesAno" class="form-control-modern" placeholder="MM/AAAA" readonly />
+								</div>
+							</div>
+							<div class="col-md-2-modern">
+								<div class="form-group-modern">
+									<label class="control-label-modern">
+										<i class="fluigicon fluigicon-hash icon-sm"></i>
+										Código
+									</label>
+									<input type="text" name="codColaborador" id="codColaborador" class="form-control-modern" placeholder="Código do Colaborador" readonly />
+								</div>
+							</div>
+							<div class="col-md-4-modern">
+								<div class="form-group-modern">
+									<label class="control-label-modern">
+										<i class="fluigicon fluigicon-user icon-sm"></i>
+										Nome do Colaborador
+									</label>
+									<input type="text" name="nomeColaborador" id="nomeColaborador" class="form-control-modern" placeholder="Nome Completo" readonly />
+								</div>
+							</div>
+							<div class="col-md-2-modern">
+								<div class="form-group-modern">
+									<label class="control-label-modern">
+										<i class="fluigicon fluigicon-hash icon-sm"></i>
+										Cód. Filial Origem
+									</label>
+									<input type="text" name="codFilialOrigem" id="codFilialOrigem" class="form-control-modern" placeholder="Código" readonly />
+								</div>
+							</div>
+							<div class="col-md-4-modern">
+								<div class="form-group-modern">
+									<label class="control-label-modern">
+										<i class="fluigicon fluigicon-building icon-sm"></i>
+										Filial Origem
+									</label>
+									<input type="text" name="nomeFilial" id="nomeFilial" class="form-control-modern" placeholder="Nome da Filial" readonly />
+								</div>
+							</div>
+							<div class="col-md-4-modern">
+								<div class="form-group-modern">
+									<label class="control-label-modern">
+										<i class="fluigicon fluigicon-dollar icon-sm"></i>
+										Salário + Impostos
+									</label>
+									<input type="text" name="vlrSalarioImpostos" id="vlrSalarioImpostos" class="form-control-modern money-field" placeholder="R$ 0,00" readonly />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- TABELA DE RATEIO FILIAIS DESTINO E PERCENTUAL DE PARTICIPACAO -->
+				<div class="panel-modern panel-primary-modern">
+					<div class="panel-heading-modern">
+						<h3 class="panel-title-modern">
+							<i class="fluigicon fluigicon-building icon-md"></i>
+							Distribuição por Filiais
+						</h3>
+					</div>
+					<div class="panel-body-modern">
+						<div class="table-responsive">
+							<table class="table-modern">
+								<thead>
+									<tr>
+										<th style="width: 15%; text-align: center;">
+											<i class="fluigicon fluigicon-hash icon-sm"></i>
+											Código
+										</th>
+										<th style="width: 50%;">
+											<i class="fluigicon fluigicon-building icon-sm"></i>
+											Filial Destino
+										</th>
+										<th style="width: 20%; text-align: center;">
+											<i class="fluigicon fluigicon-percent icon-sm"></i>
+											Percentual (%)
+										</th>
+										<th style="width: 15%; text-align: center;">
+											<i class="fluigicon fluigicon-wrench icon-sm"></i>
+											Ações
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<input type="text" 
+												   name="codFilialDestino" 
+												   id="codFilialDestino" 
+												   class="form-control text-center" 
+												   placeholder="000" 
+												   maxlength="6" />
+										</td>
+										<td>
+											<input type="text" 
+												   name="filialDestino" 
+												   id="filialDestino" 
+												   class="form-control" 
+												   placeholder="Digite o nome da filial de destino" />
+										</td>
+										<td>
+											<div class="input-group">
+												<input type="number" 
+													   name="percentualParticipacao" 
+													   id="percentualParticipacao" 
+													   class="form-control text-center" 
+													   placeholder="0,00" 
+													   min="0" 
+													   max="100" 
+													   step="0.01" />
+												<span class="input-group-addon">%</span>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						
+						<!-- Resumo -->
+						<div class="row-modern" style="margin-top: 1.5rem;">
+							<div class="col-md-6-modern">
+								<div class="form-group-modern">
+									<label class="control-label-modern">
+										<i class="fluigicon fluigicon-chart-pie icon-sm"></i>
+										Total Distribuído (%)
+									</label>
+									<input type="text" name="totalPercentual" id="totalPercentual" class="form-control-modern text-center total-highlight" value="0,00" readonly />
+								</div>
+							</div>
+							<div class="col-md-6-modern">
+								<div class="form-group-modern">
+									<label class="control-label-modern">
+										<i class="fluigicon fluigicon-building icon-sm"></i>
+										Total de Filiais
+									</label>
+									<input type="text" name="totalFiliais" id="totalFiliais" class="form-control-modern text-center filial-highlight" value="1" readonly />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			
+			<!-- Rodapé Moderno -->
+			<footer class="footer-modern">
+				<!-- atencao / edicoes deste fichario devem ser feitas exclusivamente na widget de Rateio de Colaboradores -->
+				 <h5>
+					<i class="fluigicon fluigicon-warning icon-sm"></i>
+					Edições deste formulário devem ser feitas exclusivamente na Widget de Rateio de Colaboradores
+				</h5>
+				<br/>
+				<p>
+					<i class="fluigicon fluigicon-shield icon-sm"></i>
+					Sistema desenvolvido para controle de rateio de colaboradores • SM2CE
+				</p>
+				<p>
+					<i class="fluigicon fluigicon-copyright icon-sm"></i>
+					2025 • Grupo Oncoclínicas - Todos os direitos reservados.
+				</p>
+			</footer>
+		</div>
+	</body>
+</html>

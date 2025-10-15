@@ -1,0 +1,24 @@
+application.type=widget
+application.code=RATEIO_COLABORADORES
+application.title=Rateio de Colaboradores
+application.description=Rateio de Colaboradores
+application.category=SM2CE
+application.renderer=freemarker
+application.uiwidget=true
+application.mobileapp=true
+
+application.version=2510-A2
+
+application.resource.js.1  =/resources/js/RATEIO_COLABORADORES.js
+application.resource.js.2  =/resources/js/custom.js
+application.resource.css.3 =/resources/css/RATEIO_COLABORADORES.css
+
+view.file=view.ftl
+edit.file=edit.ftl
+
+locale.file.base.name=RATEIO_COLABORADORES
+
+developer.code=rca0261.negocios@gmail.com
+developer.name=Ricardo Andrade
+developer.url=www.sm2ce.com.br
+
